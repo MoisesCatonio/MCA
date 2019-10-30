@@ -4,7 +4,7 @@ MIPS Code Analyzer it's a little program, capable of analyze some data of a MIPS
 
 # Features
 
-The code must be capable of Measure:
+The code must be capable of Measure and Execute:
 
 1. Total application instructions.
 2. Total memory read instructions and its percentage in relation with total instructions.
