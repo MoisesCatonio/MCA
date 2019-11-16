@@ -13,7 +13,3 @@ The code must be capable of Measure and Execute:
 5. Total unconditional jump instructions and its percentage in relation with total instructions.
 6. Total Arithmetic and Logic Instructions.
 7. List all registers used by the application.
-
-# OBS
-
-IT'S MADE IN PYTHON... BUT GIT STAMPED IT AS ASSEMBLY :D
