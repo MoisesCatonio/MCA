@@ -15,7 +15,7 @@ The code must be capable of Measure and Execute:
 7. List all registers used by the application.
 
 # Features Covered So Far...
-- [ ] Total application instructions.
+- [x] Total application instructions.
 - [ ] Total memory read instructions and its percentage in relation with total instructions.
 - [ ] Total memory write instructions and its percentage in relation with total instructions.
 - [ ] Total conditional jump instructions and its percentage in relation with total instructions.
