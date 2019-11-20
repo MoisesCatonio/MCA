@@ -1,7 +1,7 @@
 import os
 
 #Removing the tabs;
-with open("exe3.asm", "r") as f, open("output1.asm", "w") as f2:
+with open("lab6.asm", "r") as f, open("output1.asm", "w") as f2:
 	list_lines = f.readlines()
 
 	words = []
@@ -32,6 +32,18 @@ with open("output2.asm", "r") as f, open("output_commands.asm", "w") as f2:
 
 	f.close()
 	f2.close()
+
+#Generating a list and a set with the commands found;
+with open("output_commands.asm", "r") as commands:
+	list_of_commands = commands.read().splitlines()
+	commands_dict = dict()
+	for command in list_of_commands:
+		if command in commands_dict.keys():
+			commands_dict[command] += 1
+		else:
+			commands_dict[command] = 1
+	commands.close()
+	print(commands_dict)
 
 os.remove("output1.asm")
 os.remove("output2.asm")
