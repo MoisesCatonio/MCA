@@ -1,8 +1,9 @@
 import os
 
-name = raw_input("Insira o nome do arquivo: ")
+name = raw_input("Insira o nome do arquivo sem a sua extensão: ")
 
 file_name = name+".asm"
+print("")
 
 #Removing the tabs;
 with open(file_name, "r") as f, open("output1.txt", "w") as f2:
@@ -47,7 +48,10 @@ with open("output_commands.txt", "r") as commands:
 		else:
 			commands_dict[command] = 1
 	commands.close()
-	print(commands_dict)
+	print("Comandos gerais: \n")
+	
+	for key in commands_dict:
+		print(key+": "+str(commands_dict[key]))
 
 os.remove("output1.txt")
 os.remove("output2.txt")
