@@ -1,7 +1,11 @@
 import os
 
+name = raw_input("Insira o nome do arquivo: ")
+
+file_name = name+".asm"
+
 #Removing the tabs;
-with open("lab6.asm", "r") as f, open("output1.asm", "w") as f2:
+with open(file_name, "r") as f, open("output1.txt", "w") as f2:
 	list_lines = f.readlines()
 
 	words = []
@@ -14,7 +18,7 @@ with open("lab6.asm", "r") as f, open("output1.asm", "w") as f2:
 	f2.close()
 
 #Removing the empty lines;
-with open("output1.asm", "r") as f, open("output2.asm", "w") as f2:
+with open("output1.txt", "r") as f, open("output2.txt", "w") as f2:
 	for line in f:
 		if not line.strip(): continue
 		f2.write(line)
@@ -23,7 +27,7 @@ with open("output1.asm", "r") as f, open("output2.asm", "w") as f2:
 	f2.close()
 
 #Reading the first words of each line, identifying and removing comments, sections and labels, writing in output_commands.asm after processing;
-with open("output2.asm", "r") as f, open("output_commands.asm", "w") as f2:
+with open("output2.txt", "r") as f, open("output_commands.txt", "w") as f2:
 	for line in f:
 		first_word = line.split(None, 1)[0]
 		if line[0] == "." or line[0] == "#": continue
@@ -34,7 +38,7 @@ with open("output2.asm", "r") as f, open("output_commands.asm", "w") as f2:
 	f2.close()
 
 #Generating a list and a set with the commands found;
-with open("output_commands.asm", "r") as commands:
+with open("output_commands.txt", "r") as commands:
 	list_of_commands = commands.read().splitlines()
 	commands_dict = dict()
 	for command in list_of_commands:
@@ -45,5 +49,5 @@ with open("output_commands.asm", "r") as commands:
 	commands.close()
 	print(commands_dict)
 
-os.remove("output1.asm")
-os.remove("output2.asm")
+os.remove("output1.txt")
+os.remove("output2.txt")
