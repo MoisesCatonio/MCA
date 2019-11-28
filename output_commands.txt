@@ -10,16 +10,12 @@ syscall
 li
 syscall
 move
-slt
 beq
-addi
-j
-addi
 li
 la
 syscall
 li
-move
+la
 syscall
 li
 syscall

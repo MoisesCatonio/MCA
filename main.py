@@ -1,6 +1,6 @@
 import os
 
-name = raw_input("Insira o nome do arquivo sem a sua extensão: ")
+name = input("Insira o nome do arquivo sem a sua extensão: ")
 
 file_name = name+".asm"
 print("")
@@ -52,6 +52,9 @@ with open("output_commands.txt", "r") as commands:
 	
 	for key in commands_dict:
 		print(key+": "+str(commands_dict[key]))
+	total_commands = str(sum(commands_dict.values()))
+	print("totalizando "+total_commands+ " comandos.")
+	
 
 os.remove("output1.txt")
 os.remove("output2.txt")
