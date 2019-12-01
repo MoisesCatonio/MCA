@@ -2,6 +2,12 @@
 
 MIPS Code Analyzer it's a little program, capable of analyze some data of a MIPS archive or an alternative archive containing some MIPS code.
 
+# Runing this little piece of... heaven...
+
+First: Make sure you have python installed on your machine. (why wouldn't you have? :( )
+
+Second: Just put the main.py file in the same folder of your .asm codes and run with, (python 3.x) **py main.py**, command on your terminal or, (python 2.x) **python main.py**.
+
 # Features
 
 The code must be capable of Measure and Execute:
@@ -16,9 +22,9 @@ The code must be capable of Measure and Execute:
 
 # Features Covered So Far...
 - [x] Total application instructions.
-- [ ] Total memory read instructions and its percentage in relation with total instructions.
-- [ ] Total memory write instructions and its percentage in relation with total instructions.
-- [ ] Total conditional jump instructions and its percentage in relation with total instructions.
-- [ ] Total unconditional jump instructions and its percentage in relation with total instructions.
-- [ ] Total Arithmetic and Logic Instructions.
+- [x] Total memory read instructions and its percentage in relation with total instructions.
+- [x] Total memory write instructions and its percentage in relation with total instructions.
+- [x] Total conditional jump instructions and its percentage in relation with total instructions.
+- [x] Total unconditional jump instructions and its percentage in relation with total instructions.
+- [x] Total Arithmetic and Logic Instructions.
 - [ ] List all registers used by the application.
