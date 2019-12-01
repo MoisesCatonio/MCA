@@ -1,28 +1,18 @@
 import os
+import math
 
 #For reading the archive;
-name = input("Insira o nome do arquivo sem a sua extensão: ")
+name = input("Insira o nome do arquivo sem a sua extensão (ex: lab6): ")
 
-#Lis of all commands;
-#list_of_possible_inst = ["add", "sub", "addi", "mult", "div", "and", "or", "xor", "mfhi", "mflo", "sll", "srl", "slt", "bne", "beq", "lw", "sw", "j", "jr"] 
+#listing the possible types;
+list_of_possible_types = ["arithmetic_or_logic", "memory_read", "memory_write", "conditional_jump", "unconditional_jump", "not_documented"]
 
-#Break into labeled/named lists;
-#memory_read_inst = ["lw", "mfhi", "mflo"]
-#memory_write_inst = ["sw"]
-#conditional_jump_inst = ["bne", "beq"]
-#unconditional_jump_inst = ["j", "jr"]
-#arithmetic_and_logic_inst = ["and", "or", "xor", "sll", "srl", "slt", "sub", "mult", "div", "add", "addi"]
-#registers_used = []
-
-#unregistered_inst = []
-
-#command_types = {"memory_read": memory_read_inst, "memory_write": memory_write_inst, "conditional_jump": conditional_jump_inst, "unconditional_jump": unconditional_jump_inst, "arithmetic_and_logic": arithmetic_and_logic_inst}
-
+#identifying the command types in a dict;
 command_types = {"add": "arithmetic_or_logic", "sub": "arithmetic_or_logic", 
 "addi": "arithmetic_or_logic", "mult": "arithmetic_or_logic", "div": "arithmetic_or_logic", 
 "and": "arithmetic_or_logic", "or": "arithmetic_or_logic", "xor": "arithmetic_or_logic", 
 "mfhi": "memory_read", "mflo": "memory_read", "sll": "arithmetic_or_logic", "srl": "arithmetic_or_logic",
-"slt": "arithmetic_or_logic", "bne": "conditional_jump", "beq""bne": "conditional_jump", 
+"slt": "arithmetic_or_logic", "bne": "conditional_jump", "beq": "conditional_jump", "bne": "conditional_jump", 
 "lw": "memory_read", "sw": "memory_write", "j": "unconditional_jump", "jr": "unconditional_jump"}
 
 file_name = name+".asm"
@@ -61,6 +51,10 @@ with open("output2.txt", "r") as f, open("output_commands.txt", "w") as f2:
 	f.close()
 	f2.close()
 
+#getting rid of unused archives;
+os.remove("output1.txt")
+os.remove("output2.txt")
+
 #Generating a list and a set with the commands found;
 with open("output_commands.txt", "r") as commands:
 	list_of_commands = commands.read().splitlines()
@@ -71,7 +65,7 @@ with open("output_commands.txt", "r") as commands:
 		else:
 			commands_dict[command] = 1
 	commands.close()
-	print("Comandos gerais: \n")
+	print("Comandos gerais utilizados: \n")
 	
 	for key in commands_dict:
 		print(key+": "+str(commands_dict[key]))
@@ -85,12 +79,39 @@ with open("output_commands.txt", "r") as commands:
 #list to receive the ocurrences of each type;
 list_of_types = []
 
+#analyzing the values and adding the values;
 for item in list_of_commands:
 	if(item in command_types):
 		list_of_types.append(command_types[item])
 	else:
 		list_of_types.append("not_documented")
 
+#turning the results of the previous list in dict counting the ocurrences;
+dict_of_types = {}
 
-os.remove("output1.txt")
-os.remove("output2.txt")
+for item in list_of_types:
+	if item in dict_of_types.keys():
+		dict_of_types[item] += 1
+	else:
+		dict_of_types[item] = 1 
+
+#creating the function to read and atribute the values;
+def count_percentage(some_dict):
+	
+	total = sum(some_dict.values())
+	one_percent = (total/100)
+
+	for key in some_dict:
+		some_dict[key] = ("%.2f"%(some_dict[key]/one_percent))
+
+count_percentage(dict_of_types)
+
+#Final percentage exibition.
+print("\n")
+print("Porcentagens totais de participação relacionadas ao programa: \n")
+
+for item in list_of_possible_types:
+	if item in dict_of_types:
+		print(item+": "+str(dict_of_types[item])+"% \n")
+	else:
+		print(item+": "+"0% \n")
