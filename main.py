@@ -1,6 +1,20 @@
 import os
 
+#Para leitura do arquivo;
 name = input("Insira o nome do arquivo sem a sua extensão: ")
+
+list_of_possible_inst = ["add", "sub", "addi", "mult", "div", "and", "or", "xor", "mfhi", "mflo", "sll", "srl", "slt", "bne", "beq", "lw", "sw", "j", "jr"] 
+
+memory_read_inst = ["lw"]
+memory_write_inst = ["sw"]
+conditional_jump_inst = ["bne", "beq"]
+unconditional_jump_inst = ["j", "jr"]
+arithmetic_and_logic_inst = ["and", "or", "xor", "sll", "srl", "sub", "mult", "div", "add", "addi"]
+registers_used = []
+
+unregistered_ins = []
+
+command_types = {"memory_read": memory_read_inst, "memory_write": memory_write_inst, "conditional_jump": conditional_jump_inst, "unconditional_jump": unconditional_jump_inst, "arithmetic_and_logic": arithmetic_and_logic_inst}
 
 file_name = name+".asm"
 print("")
@@ -52,9 +66,15 @@ with open("output_commands.txt", "r") as commands:
 	
 	for key in commands_dict:
 		print(key+": "+str(commands_dict[key]))
-	total_commands = str(sum(commands_dict.values()))
-	print("totalizando "+total_commands+ " comandos.")
+	total_commands = sum(commands_dict.values())
+	total_commands_str = str(total_commands)
+	print("")
+
+
+	print("totalizando "+total_commands_str+ " comandos.")
 	
+
+
 
 os.remove("output1.txt")
 os.remove("output2.txt")
