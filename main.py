@@ -16,7 +16,7 @@ command_types = {"add": "arithmetic_or_logic", "sub": "arithmetic_or_logic",
 "lw": "memory_read", "sw": "memory_write", "j": "unconditional_jump", "jr": "unconditional_jump"}
 
 file_name = name+".asm"
-print("")
+print("\n")
 
 #Removing the tabs;
 with open(file_name, "r") as f, open("output1.txt", "w") as f2:
@@ -76,6 +76,8 @@ with open("output_commands.txt", "r") as commands:
 
 	print("totalizando "+total_commands_str+ " comandos.")
 
+print("\n")
+
 #list to receive the ocurrences of each type;
 list_of_types = []
 
@@ -102,6 +104,8 @@ def count_percentage(some_dict):
 	one_percent = (total/100)
 
 	for key in some_dict:
+		print(key+" com "+str(some_dict[key]) + " ocorrências.")
+		print("\n")
 		some_dict[key] = ("%.2f"%(some_dict[key]/one_percent))
 
 count_percentage(dict_of_types)
@@ -114,4 +118,4 @@ for item in list_of_possible_types:
 	if item in dict_of_types:
 		print(item+": "+str(dict_of_types[item])+"% \n")
 	else:
-		print(item+": "+"0% \n")
+		print(item+": "+"0% \n")	
