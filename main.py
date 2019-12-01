@@ -1,20 +1,29 @@
 import os
 
-#Para leitura do arquivo;
+#For reading the archive;
 name = input("Insira o nome do arquivo sem a sua extensão: ")
 
-list_of_possible_inst = ["add", "sub", "addi", "mult", "div", "and", "or", "xor", "mfhi", "mflo", "sll", "srl", "slt", "bne", "beq", "lw", "sw", "j", "jr"] 
+#Lis of all commands;
+#list_of_possible_inst = ["add", "sub", "addi", "mult", "div", "and", "or", "xor", "mfhi", "mflo", "sll", "srl", "slt", "bne", "beq", "lw", "sw", "j", "jr"] 
 
-memory_read_inst = ["lw"]
-memory_write_inst = ["sw"]
-conditional_jump_inst = ["bne", "beq"]
-unconditional_jump_inst = ["j", "jr"]
-arithmetic_and_logic_inst = ["and", "or", "xor", "sll", "srl", "sub", "mult", "div", "add", "addi"]
-registers_used = []
+#Break into labeled/named lists;
+#memory_read_inst = ["lw", "mfhi", "mflo"]
+#memory_write_inst = ["sw"]
+#conditional_jump_inst = ["bne", "beq"]
+#unconditional_jump_inst = ["j", "jr"]
+#arithmetic_and_logic_inst = ["and", "or", "xor", "sll", "srl", "slt", "sub", "mult", "div", "add", "addi"]
+#registers_used = []
 
-unregistered_ins = []
+#unregistered_inst = []
 
-command_types = {"memory_read": memory_read_inst, "memory_write": memory_write_inst, "conditional_jump": conditional_jump_inst, "unconditional_jump": unconditional_jump_inst, "arithmetic_and_logic": arithmetic_and_logic_inst}
+#command_types = {"memory_read": memory_read_inst, "memory_write": memory_write_inst, "conditional_jump": conditional_jump_inst, "unconditional_jump": unconditional_jump_inst, "arithmetic_and_logic": arithmetic_and_logic_inst}
+
+command_types = {"add": "arithmetic_or_logic", "sub": "arithmetic_or_logic", 
+"addi": "arithmetic_or_logic", "mult": "arithmetic_or_logic", "div": "arithmetic_or_logic", 
+"and": "arithmetic_or_logic", "or": "arithmetic_or_logic", "xor": "arithmetic_or_logic", 
+"mfhi": "memory_read", "mflo": "memory_read", "sll": "arithmetic_or_logic", "srl": "arithmetic_or_logic",
+"slt": "arithmetic_or_logic", "bne": "conditional_jump", "beq""bne": "conditional_jump", 
+"lw": "memory_read", "sw": "memory_write", "j": "unconditional_jump", "jr": "unconditional_jump"}
 
 file_name = name+".asm"
 print("")
@@ -72,8 +81,15 @@ with open("output_commands.txt", "r") as commands:
 
 
 	print("totalizando "+total_commands_str+ " comandos.")
-	
 
+#list to receive the ocurrences of each type;
+list_of_types = []
+
+for item in list_of_commands:
+	if(item in command_types):
+		list_of_types.append(command_types[item])
+	else:
+		list_of_types.append("not_documented")
 
 
 os.remove("output1.txt")
