@@ -16,9 +16,9 @@ The code must be capable of Measure and Execute:
 
 # Features Covered So Far...
 - [x] Total application instructions.
-- [ ] Total memory read instructions and its percentage in relation with total instructions.
-- [ ] Total memory write instructions and its percentage in relation with total instructions.
-- [ ] Total conditional jump instructions and its percentage in relation with total instructions.
-- [ ] Total unconditional jump instructions and its percentage in relation with total instructions.
-- [ ] Total Arithmetic and Logic Instructions.
+- [x] Total memory read instructions and its percentage in relation with total instructions.
+- [x] Total memory write instructions and its percentage in relation with total instructions.
+- [x] Total conditional jump instructions and its percentage in relation with total instructions.
+- [x] Total unconditional jump instructions and its percentage in relation with total instructions.
+- [x] Total Arithmetic and Logic Instructions.
 - [ ] List all registers used by the application.
