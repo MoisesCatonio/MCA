@@ -51,6 +51,24 @@ with open("output2.txt", "r") as f, open("output_commands.txt", "w") as f2:
 	f.close()
 	f2.close()
 
+#registers set;
+reg_set = set()
+
+#Second iteration to identify the registers;
+with open("output2.txt", "r") as f:
+	for line in f:
+		line_elements = line.split(None)
+		for element in line_elements:
+			if element[0] == '$':
+				if(element[-1] == ','):
+					element = element[:-1]
+					reg_set.add(element)
+				else:
+					reg_set.add(element)
+	print("Registradores utilizados: ")
+	print(reg_set)
+	print("--------------------------------------------\n")
+	f.close()
 #getting rid of unused archives;
 os.remove("output1.txt")
 os.remove("output2.txt")
@@ -76,7 +94,7 @@ with open("output_commands.txt", "r") as commands:
 
 	print("totalizando "+total_commands_str+ " comandos.")
 
-print("\n")
+print("----------------------------------------------------\n")
 
 #list to receive the ocurrences of each type;
 list_of_types = []
@@ -111,7 +129,7 @@ def count_percentage(some_dict):
 count_percentage(dict_of_types)
 
 #Final percentage exibition.
-print("\n")
+print("-----------------------------------------------------\n")
 print("Porcentagens totais de participação relacionadas ao programa: \n")
 
 for item in list_of_possible_types:
