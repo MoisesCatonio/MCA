@@ -6,7 +6,7 @@ MIPS Code Analyzer it's a little program, capable of analyze some data of a MIPS
 
 First: Make sure you have python installed on your machine. (why wouldn't you have? :( )
 
-Second: Just put the main.py file in the same folder of your .asm codes and run with, (python 3.x) **py main.py**, command on your terminal or, (python 2.x) **python main2.py**.
+Second: Just put the .asm code into the repository cloned folder and run with, (python 3.x) **py main.py**, command on your terminal or, (python 2.x) **python main2.py**.
 
 # Features
 
